@@ -1,0 +1,23 @@
+.main {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header {
+    position: sticky;
+    overflow: hidden;
+    width: 100%;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: lightblue;
+}
+
+.container-margin {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
