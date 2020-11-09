@@ -8,6 +8,7 @@ const IconContainer = (props) => {
                     src={props.src} 
                     width={props.width} 
                     height={props.height}
+                    style={props.style}
                 >
                 </img>
             </a>

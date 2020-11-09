@@ -1,4 +1,5 @@
 import StaticLayout from '../scripts/components/StaticLayout'
+import Loader from '../scripts/components/shared/Loader'
 import Head from 'next/head'
 import { TitleContext, PathNameContext } from '../scripts/contexts.js'
 import { Container, Row, Col } from 'react-bootstrap'
@@ -57,19 +58,17 @@ function MyApp({ Component, pageProps }) {
       <PathNameContext.Provider value={ (typeof location !== Utils.sUndefined) && location.pathname }>
         <main className="main">
           <StaticLayout {...pageProps} />
-          <Container className="container-margin">
-            <Row>
-              <Col 
-                  xs={widthColumn.xs}
-                  sm={widthColumn.sm}
-                  md={widthColumn.md}
-                  lg={widthColumn.lg}
-                  xl={widthColumn.xl}
-              >
-                <Component {...pageProps} />
-              </Col>
-            </Row>
-          </Container>
+          <Row id="main-content" className="row-margin-laterals row-margin-top">
+            <Col 
+                xs={widthColumn.xs}
+                sm={widthColumn.sm}
+                md={widthColumn.md}
+                lg={widthColumn.lg}
+                xl={widthColumn.xl}
+            >
+              <Component {...pageProps} />
+            </Col>
+          </Row>
         </main>
       </PathNameContext.Provider>
     </>

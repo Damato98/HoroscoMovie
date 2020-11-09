@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import MovieContainer from '../containers/MovieContainer'
 
-function Movie() {
-    return (
-        <h3>Testing movie</h3>
-    )
+class Movie extends Component {
+
+    constructor() {
+        super();
+
+        this.items = [0, 1, 2, 3, 4, 5];
+    }
+    render() {
+        return (
+            <MovieContainer items={this.items} />
+        )
+    }
 }
 
 export default Movie
