@@ -13,6 +13,7 @@ class Icon extends Component {
                 src={this.props.src}
                 width={this.props.width}
                 height={this.props.height} 
+                style={this.props.style}
             />
         )
     }

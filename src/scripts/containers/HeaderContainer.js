@@ -1,5 +1,6 @@
 import Icon from '../components/shared/Icon'
 import { Container, Row, Col, Nav } from 'react-bootstrap'
+import Loader from '../components/shared/Loader'
 
 function HeaderContainer(props) {
     const navIconsComponents = props.icons.map(icon => 
