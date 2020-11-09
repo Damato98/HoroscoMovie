@@ -12,7 +12,7 @@ function MovieContainer(props) {
                         <h3>Test movie</h3>
                     </Col>
                     <Col xs="12" sm="12" md="12" lg="12" xl="12" className="justify-content-center">
-                        <Carousel listItems={props.items} />
+                        <Carousel listItems={props.items} itemsPerPage={3} />
                     </Col>
                 </Row>
             </Container>

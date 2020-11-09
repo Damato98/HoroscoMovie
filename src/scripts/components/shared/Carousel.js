@@ -12,17 +12,14 @@ class Carousel extends Component {
         /**** STATE ****/
         this.state = {
             isClient: false,
+            itemsPerPage: (props.itemsPerPage > props.listItems.length) ? props.listItems.length : (props.itemsPerPage <= 0) ? 1 : props.itemsPerPage,
             items: []
         };
-
-        /**** CONST ****/
-        this.itemsPerPage = 4;
 
         /**** VARIABLE ****/
         this.containerRef = React.createRef();
         this.itemsRef = [];
-        this.itemsPerPage = (this.itemsPerPage > props.listItems.length) ? props.listItems.length : this.itemsPerPage;
-        this.currentIndex = this.itemsPerPage - 1;
+        this.currentIndex = this.state.itemsPerPage - 1;
 
         /**** BINDING FUNCTION ****/
         this.updateContainerRef = this.updateContainerRef.bind(this);
@@ -31,7 +28,7 @@ class Carousel extends Component {
     }
 
     componentDidMount() {
-        let widthPercentageItem = 100 / this.itemsPerPage;
+        let widthPercentageItem = 100 / this.state.itemsPerPage;
 
         this.setState({
             isClient: true,
@@ -60,20 +57,20 @@ class Carousel extends Component {
         if (direccion == 1) {
             scrollTo = 'end';
 
-            if ((this.currentIndex % this.itemsPerPage) == 0)
-                this.currentIndex += this.itemsPerPage - 1;
+            if ((this.currentIndex % this.state.itemsPerPage) == 0)
+                this.currentIndex += this.state.itemsPerPage - 1;
         }
         else {
             scrollTo = 'start';
 
-            if ((this.currentIndex % this.itemsPerPage) != 0)
-                this.currentIndex -= this.itemsPerPage - 1;
+            if ((this.currentIndex % this.state.itemsPerPage) != 0)
+                this.currentIndex -= this.state.itemsPerPage - 1;
         }
 
-        this.currentIndex += direccion * this.itemsPerPage;
+        this.currentIndex += direccion * this.state.itemsPerPage;
 
         if (this.currentIndex < 0)
-            this.currentIndex += this.itemsPerPage;
+            this.currentIndex = 0;
         else if (this.currentIndex >= this.props.listItems.length)
             this.currentIndex = this.props.listItems.length - 1;
 
@@ -92,7 +89,7 @@ class Carousel extends Component {
                         updateContainerRef={this.updateContainerRef} 
                         moveCarousel={this.moveCarousel}
                         items={this.state.items}
-                        showButtons={(this.itemsPerPage >= this.state.items.length)}
+                        showButtons={(this.state.itemsPerPage >= this.state.items.length)}
                     />
                 </Suspense>
             )}
